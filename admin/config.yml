@@ -19,12 +19,30 @@ collections:
       - { label: "Titre en français", name: "titre_francais", widget: "string", required: false }
       - { label: "Chorégraphe", name: "choregraphe", widget: "string", required: false }
       - { label: "Année", name: "annee", widget: "number", required: false, value_type: "int" }
-      - { label: "Musique", name: "musique", widget: "string", required: false }
+      - { label: "Musique (compositeur)", name: "musique", widget: "string", required: false }
       - { label: "Pas et mouvements (Chorégraphie détaillée)", name: "pas_choregraphie", widget: "text", required: false }
       - { label: "Sens de la chorégraphie", name: "sens_choregraphie", widget: "text", required: false }
-      - { label: "Lien vidéo", name: "lien_video", widget: "string", required: false }
-      - { label: "Lien musique", name: "lien_musique", widget: "string", required: false }
       - { label: "Paroles (Hébreu)", name: "paroles_hebreu", widget: "text", required: false }
       - { label: "Paroles (Translittération)", name: "paroles_translitteration", widget: "text", required: false }
       - { label: "Paroles (Français)", name: "paroles_francais", widget: "text", required: false }
       - { label: "Fiche ODT", name: "fiche_odt", widget: "file", required: false, hint: "Téléversez le document ODT ici" }
+      
+      # NOUVEAU : Liste pour les vidéos
+      - label: "Vidéos"
+        name: "videos"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre de la vidéo", name: "titre", widget: "string" }
+          - { label: "Lien de la vidéo (YouTube, etc.)", name: "lien", widget: "string" }
+          - { label: "Miniature (Image)", name: "image", widget: "image", required: false, hint: "Si vous laissez vide et que c'est YouTube, l'image sera automatique." }
+          
+      # NOUVEAU : Liste pour les musiques
+      - label: "Musiques (Liens d'écoute)"
+        name: "musiques"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre de la musique", name: "titre", widget: "string" }
+          - { label: "Lien d'écoute (Spotify, Deezer, YouTube...)", name: "lien", widget: "string" }
+          - { label: "Miniature (Image)", name: "image", widget: "image", required: false }
