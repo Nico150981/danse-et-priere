@@ -20,10 +20,11 @@ collections:
       - { label: "Chorégraphe", name: "choregraphe", widget: "string", required: false }
       - { label: "Année", name: "annee", widget: "number", required: false, value_type: "int" }
       - { label: "Musique", name: "musique", widget: "string", required: false }
-      - { label: "Paroles (Hébreu)", name: "paroles_hebreu", widget: "text", required: false }
-      - { label: "Paroles (Translittération)", name: "paroles_translitteration", widget: "text", required: false }
-      - { label: "Paroles (Français)", name: "paroles_francais", widget: "text", required: false }
+      - { label: "Pas et mouvements (Chorégraphie détaillée)", name: "pas_choregraphie", widget: "text", required: false }
       - { label: "Sens de la chorégraphie", name: "sens_choregraphie", widget: "text", required: false }
       - { label: "Lien vidéo", name: "lien_video", widget: "string", required: false }
       - { label: "Lien musique", name: "lien_musique", widget: "string", required: false }
+      - { label: "Paroles (Hébreu)", name: "paroles_hebreu", widget: "text", required: false }
+      - { label: "Paroles (Translittération)", name: "paroles_translitteration", widget: "text", required: false }
+      - { label: "Paroles (Français)", name: "paroles_francais", widget: "text", required: false }
       - { label: "Fiche ODT", name: "fiche_odt", widget: "file", required: false, hint: "Téléversez le document ODT ici" }
