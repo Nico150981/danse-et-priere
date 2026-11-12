@@ -2,7 +2,7 @@ backend:
   name: github
   repo: Nico150981/danse-et-priere
   branch: main
-  base_url: https://danse-priere-auth.ton-sous-domaine.workers.dev # ⚠️ Nous changerons cette ligne plus tard
+  auth_method: token
 
 media_folder: "danses/fichiers"
 public_folder: "/danses/fichiers"
