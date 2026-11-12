@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Danses - Danse et prière</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #fffaf4; color: #2d2a26; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #f28c28; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-decoration: none; color: inherit; display: block; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); border: 1px solid #f28c28; }
+        .card h3 { margin-top: 0; color: #c25e00; }
+        .loader { text-align: center; font-size: 1.2rem; margin-top: 50px; }
+        .back-btn { display: block; width: max-content; margin: 20px auto; padding: 10px 20px; background: #f28c28; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">← Retour au site principal</a>
+    <h1>Listing des danses</h1>
+    
+    <div id="loader" class="loader">Chargement des danses en cours...</div>
+    <div id="danses-container" class="grid"></div>
+
+    <script>
+        // On demande à GitHub la liste des fichiers dans le dossier "danses"
+        const url = 'https://api.github.com/repos/Nico150981/danse-et-priere/contents/danses';
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(files => {
+                document.getElementById('loader').style.display = 'none';
+                const container = document.getElementById('danses-container');
+                
+                // On filtre pour ne garder que les fichiers .md (Markdown)
+                const mdFiles = files.filter(file => file.name.endsWith('.md'));
+
+                if (mdFiles.length === 0) {
+                    container.innerHTML = "<p>Aucune danse n'est disponible pour le moment.</p>";
+                    return;
+                }
+
+                mdFiles.forEach(file => {
+                    // Pour chaque danse, on crée une carte cliquable
+                    const card = document.createElement('a');
+                    card.className = 'card';
+                    // Le lien pointera vers une future page "danse.html"
+                    card.href = `danse.html?fichier=${file.name}`; 
+                    
+                    // On récupère le titre dans le nom du fichier pour l'afficher
+                    // (par exemple "ma-danse.md" devient "Ma danse")
+                    let titreProvisoire = file.name.replace('.md', '').replace(/-/g, ' ');
+                    
+                    card.innerHTML = `
+                        <h3>${titreProvisoire}</h3>
+                        <p>Cliquez pour voir les détails, les paroles et télécharger la fiche.</p>
+                    `;
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => {
+                document.getElementById('loader').innerText = "Erreur lors du chargement.";
+                console.error('Erreur:', error);
+            });
+    </script>
+</body>
+</html>
