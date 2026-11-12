@@ -105,7 +105,7 @@ paroles_francais: |-
   Loin de toi je fuis comme d’un fléau
   Il y a encore beaucoup de choses que je souhaiterais faire
   Bien sûr, tu me pardonneras aussi cette année.
-fiche_odt: ''
+fiche_odt: /danses/fichiers/OD LO AHAVTIDAY [Résolution de l'écran].jpg
 videos:
   - titre: Lo Ahavti Dai - Israeli dance
     lien: https://www.youtube.com/watch?v=K45EDq9OvEI&t=3s
@@ -116,7 +116,7 @@ videos:
 musiques:
   - titre: Od lo ahavti dai
     lien: https://www.youtube.com/watch?v=V4QSoLFj-NM
-    image: /danses/fichiers/OD LO AHAVTIDAY [Résolution de l'écran].jpg
+    image: ''
 lien_musique: https://www.youtube.com/watch?v=V4QSoLFj-NM
 lien_video: https://www.youtube.com/watch?v=WhOxXeigboc
 ---
