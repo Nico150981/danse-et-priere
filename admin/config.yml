@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: Nico150981/danse-et-priere
+  branch: main
+  base_url: https://danse-priere-auth.ton-sous-domaine.workers.dev # ⚠️ Nous changerons cette ligne plus tard
+
+media_folder: "danses/fichiers"
+public_folder: "/danses/fichiers"
+
+collections:
+  - name: "danses"
+    label: "Danses"
+    folder: "danses"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Titre en français", name: "titre_francais", widget: "string", required: false }
+      - { label: "Chorégraphe", name: "choregraphe", widget: "string", required: false }
+      - { label: "Année", name: "annee", widget: "number", required: false, value_type: "int" }
+      - { label: "Musique", name: "musique", widget: "string", required: false }
+      - { label: "Paroles (Hébreu)", name: "paroles_hebreu", widget: "text", required: false }
+      - { label: "Paroles (Translittération)", name: "paroles_translitteration", widget: "text", required: false }
+      - { label: "Paroles (Français)", name: "paroles_francais", widget: "text", required: false }
+      - { label: "Sens de la chorégraphie", name: "sens_choregraphie", widget: "text", required: false }
+      - { label: "Lien vidéo", name: "lien_video", widget: "string", required: false }
+      - { label: "Lien musique", name: "lien_musique", widget: "string", required: false }
+      - { label: "Fiche ODT", name: "fiche_odt", widget: "file", required: false, hint: "Téléversez le document ODT ici" }
