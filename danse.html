@@ -4,19 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails de la danse - Danse et prière</title>
+    <!-- On ajoute une bibliothèque pour lire parfaitement les textes longs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <style>
         :root { --orange: #f28c28; --texte: #2d2a26; --fond: #fffaf4; --doux: #5f574f; }
         body { font-family: Arial, sans-serif; background-color: var(--fond); color: var(--texte); margin: 0; padding: 20px; line-height: 1.6; }
         .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { color: var(--orange); text-align: center; }
-        h2 { color: var(--texte); border-bottom: 2px solid var(--orange); padding-bottom: 5px; margin-top: 30px; }
+        h1 { color: var(--orange); text-align: center; margin-bottom: 5px; }
         .meta { text-align: center; color: var(--doux); margin-bottom: 30px; font-size: 1.1rem; }
+        
+        /* Boutons d'onglets */
+        .tabs { display: flex; border-bottom: 2px solid #eee; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab-btn { background: none; border: none; padding: 10px 20px; font-size: 1.1rem; font-weight: bold; color: var(--doux); cursor: pointer; border-bottom: 3px solid transparent; transition: 0.3s; }
+        .tab-btn:hover { color: var(--orange); }
+        .tab-btn.active { color: var(--orange); border-bottom-color: var(--orange); }
+        
+        /* Contenu des onglets */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         .lyrics-box { background: #fdf6ec; padding: 20px; border-radius: 10px; margin-bottom: 20px; white-space: pre-wrap; font-family: monospace; font-size: 1rem; }
+        .chore-box { background: #eef2f5; padding: 20px; border-radius: 10px; margin-bottom: 20px; white-space: pre-wrap; font-family: inherit; font-size: 1.05rem; }
+        
         .btn-download { display: block; text-align: center; background: #2d2a26; color: white; padding: 15px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; transition: background 0.3s; }
         .btn-download:hover { background: #000; }
         .btn-back { display: inline-block; text-decoration: none; color: var(--orange); font-weight: bold; margin-bottom: 20px; }
         .link-btn { display: inline-block; background: var(--orange); color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-right: 10px; margin-bottom: 10px; font-weight: bold;}
         .loader { text-align: center; font-size: 1.2rem; margin-top: 50px; color: var(--orange); }
+        h3 { color: var(--texte); border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 25px; }
     </style>
 </head>
 <body>
@@ -28,37 +44,62 @@
         
         <div id="contenu-danse" style="display: none;">
             <h1 id="titre-danse">Titre</h1>
-            <div class="meta">
-                <span id="meta-choregraphe"></span> | <span id="meta-annee"></span> | <span id="meta-musique"></span>
+            <div class="meta" id="meta-infos"></div>
+
+            <div id="zone-liens" style="text-align:center; margin-bottom: 20px;"></div>
+
+            <!-- Le système d'onglets -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="ouvrirOnglet('paroles', this)">📜 Paroles</button>
+                <button class="tab-btn" onclick="ouvrirOnglet('chore', this)">💃 Chorégraphie</button>
+                <button class="tab-btn" onclick="ouvrirOnglet('fichiers', this)">📁 Fichiers</button>
             </div>
 
-            <div id="zone-lien-video"></div>
+            <!-- Onglet Paroles -->
+            <div id="tab-paroles" class="tab-content active">
+                <h3>Hébreu</h3>
+                <div id="paroles-hebreu" class="lyrics-box">Non renseigné</div>
+                <h3>Translittération</h3>
+                <div id="paroles-translitteration" class="lyrics-box">Non renseigné</div>
+                <h3>Français</h3>
+                <div id="paroles-francais" class="lyrics-box">Non renseigné</div>
+            </div>
 
-            <h2>Paroles (Hébreu)</h2>
-            <div id="paroles-hebreu" class="lyrics-box">Non renseigné</div>
+            <!-- Onglet Chorégraphie -->
+            <div id="tab-chore" class="tab-content">
+                <h3>Le sens de la danse</h3>
+                <div id="sens-choregraphie" class="chore-box">Non renseigné</div>
+                
+                <h3>Les pas et mouvements</h3>
+                <div id="pas-choregraphie" class="chore-box">Non renseigné</div>
+            </div>
 
-            <h2>Paroles (Translittération)</h2>
-            <div id="paroles-translitteration" class="lyrics-box">Non renseigné</div>
+            <!-- Onglet Fichiers -->
+            <div id="tab-fichiers" class="tab-content">
+                <p>Vous pouvez télécharger la fiche complète de cette danse au format ODT (compatible Word) :</p>
+                <div id="zone-odt"></div>
+            </div>
 
-            <h2>Paroles (Français)</h2>
-            <div id="paroles-francais" class="lyrics-box">Non renseigné</div>
-
-            <h2>Sens de la chorégraphie</h2>
-            <div id="sens-choregraphie" class="lyrics-box" style="font-family: inherit;">Non renseigné</div>
-
-            <div id="zone-odt"></div>
         </div>
     </div>
 
     <script>
-        // 1. On récupère le nom du fichier dans l'URL (ex: danse.html?fichier=la-vida-de-colores.md)
+        // Fonction pour changer d'onglet
+        function ouvrirOnglet(nomOnglet, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById('tab-' + nomOnglet).classList.add('active');
+            btnElement.classList.add('active');
+        }
+
+        // 1. On récupère le nom du fichier dans l'URL
         const urlParams = new URLSearchParams(window.location.search);
         const fileName = urlParams.get('fichier');
 
         if (!fileName) {
             document.getElementById('loader').innerText = "Erreur : Aucune danse spécifiée.";
         } else {
-            // 2. On va chercher le fichier Markdown sur GitHub
             const rawUrl = `https://raw.githubusercontent.com/Nico150981/danse-et-priere/main/danses/${fileName}`;
 
             fetch(rawUrl)
@@ -67,47 +108,48 @@
                     return response.text();
                 })
                 .then(text => {
-                    // 3. On sépare l'en-tête (YAML) du contenu (Markdown)
+                    // On sépare l'en-tête (YAML) du contenu (Markdown)
                     const parts = text.split('---');
                     const yamlPart = parts[1];
                     
-                    // 4. On extrait les données avec une petite fonction
-                    const data = parseYaml(yamlPart);
+                    // On utilise la bibliothèque js-yaml pour lire les données parfaitement
+                    const data = jsyaml.load(yamlPart);
 
-                    // 5. On remplit la page
+                    // Infos de base
                     document.getElementById('titre-danse').innerText = data.title || "Sans titre";
                     
                     let metaStr = [];
                     if (data.choregraphe) metaStr.push(`Chorégraphe : ${data.choregraphe}`);
                     if (data.annee) metaStr.push(`Année : ${data.annee}`);
                     if (data.musique) metaStr.push(`Musique : ${data.musique}`);
-                    document.getElementById('meta-choregraphe').innerText = metaStr.join(" | ") || "";
+                    document.getElementById('meta-infos').innerText = metaStr.join(" | ") || "";
 
-                    // Remplissage des paroles
+                    // Liens Vidéo / Musique
+                    let liensHtml = "";
+                    if (data.lien_video) liensHtml += `<a href="${data.lien_video}" target="_blank" class="link-btn">🎬 Voir la vidéo</a>`;
+                    if (data.lien_musique) liensHtml += `<a href="${data.lien_musique}" target="_blank" class="link-btn">🎵 Écouter la musique</a>`;
+                    document.getElementById('zone-liens').innerHTML = liensHtml;
+
+                    // Paroles
                     if (data.paroles_hebreu) document.getElementById('paroles-hebreu').innerText = data.paroles_hebreu;
                     if (data.paroles_translitteration) document.getElementById('paroles-translitteration').innerText = data.paroles_translitteration;
                     if (data.paroles_francais) document.getElementById('paroles-francais').innerText = data.paroles_francais;
+
+                    // Chorégraphie
                     if (data.sens_choregraphie) document.getElementById('sens-choregraphie').innerText = data.sens_choregraphie;
+                    if (data.pas_choregraphie) document.getElementById('pas-choregraphie').innerText = data.pas_choregraphie;
 
-                    // Liens (Vidéo / Musique)
-                    let videoHtml = "";
-                    if (data.lien_video) videoHtml += `<a href="${data.lien_video}" target="_blank" class="link-btn">🎬 Voir la vidéo</a>`;
-                    if (data.lien_musique) videoHtml += `<a href="${data.lien_musique}" target="_blank" class="link-btn">🎵 Écouter la musique</a>`;
-                    document.getElementById('zone-lien-video').innerHTML = videoHtml;
-
-                    // Bouton ODT
+                    // Fichier ODT
                     if (data.fiche_odt) {
-                        // Le champ fiche_odt contient le chemin (ex: danses/fichiers/ma-fiche.odt)
-                        // On enlève le "danses/" au début car on est déjà dans le dossier racine du site
                         let odtPath = data.fiche_odt;
                         if (odtPath.startsWith('/')) odtPath = odtPath.substring(1);
-                        
                         document.getElementById('zone-odt').innerHTML = `
                             <a href="${odtPath}" download class="btn-download">📥 Télécharger la fiche complète (ODT)</a>
                         `;
+                    } else {
+                        document.getElementById('zone-odt').innerText = "Aucun fichier joint pour cette danse.";
                     }
 
-                    // Affichage
                     document.getElementById('loader').style.display = 'none';
                     document.getElementById('contenu-danse').style.display = 'block';
                 })
@@ -115,31 +157,6 @@
                     document.getElementById('loader').innerText = "Erreur lors du chargement de la danse.";
                     console.error(error);
                 });
-        }
-
-        // Petite fonction pour lire le YAML basique
-        function parseYaml(yamlText) {
-            const result = {};
-            if (!yamlText) return result;
-            const lines = yamlText.split('\n');
-            let currentKey = null;
-
-            lines.forEach(line => {
-                // Si la ligne commence par un mot suivi de ":", c'est une clé
-                const match = line.match(/^([a-zA-Z0-9_]+):\s*(.*)$/);
-                if (match) {
-                    currentKey = match[1];
-                    let val = match[2].trim();
-                    // On enlève les guillemets s'il y en a
-                    if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
-                    if (val.startsWith("'") && val.endsWith("'")) val = val.slice(1, -1);
-                    result[currentKey] = val;
-                } else if (currentKey && line.trim() !== '') {
-                    // C'est la suite d'un texte multi-lignes (comme les paroles)
-                    result[currentKey] += '\n' + line;
-                }
-            });
-            return result;
         }
     </script>
 </body>
