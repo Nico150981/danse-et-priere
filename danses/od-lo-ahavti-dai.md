@@ -4,8 +4,25 @@ titre_francais: oh, je n'ai pas assez aimé"
 choregraphe: Naomi Shemer
 annee: 1977
 musique: ''
-pas_choregraphie: ''
-sens_choregraphie: ''
+pas_choregraphie: |-
+  En cercle
+
+  premiere partie	x2
+
+  -2 mayim vers la G
+  -frappe D devant en levant les bras vers le ciel
+
+
+  deuxieme partie	x2
+
+  -vers le centre 4 pas en levant les mains
+  -reculer en 4 pas
+  -ouvre ferme, ouvre ferme vers la D
+  -tour sur D en 3 pas
+  -ferme G
+sens_choregraphie: |-
+  « Jusqu’à ce jour, je n’ai pas encore bâti de village. Je n’ai pas encore trouvé d’eau. Au milieu du désert, je n’ai pas encore la route. Qui me conduira là où je dois aller. Ah je n’ai pas encore assez aimé ! Le vent, le soleil sur mon visage. Ah ! Je n’ai pas encore assez aimé ! Et si ce n’est maintenant, quand sera-ce ? »
+  (Chant des kibboutzim Israéliens)
 paroles_hebreu: |2-
    כפר
   עוד לא מצאתי מים באמצע המדבר
@@ -99,7 +116,7 @@ videos:
 musiques:
   - titre: Od lo ahavti dai
     lien: https://www.youtube.com/watch?v=V4QSoLFj-NM
-    image: ''
+    image: /danses/fichiers/OD LO AHAVTIDAY [Résolution de l'écran].jpg
 lien_musique: https://www.youtube.com/watch?v=V4QSoLFj-NM
 lien_video: https://www.youtube.com/watch?v=WhOxXeigboc
 ---
