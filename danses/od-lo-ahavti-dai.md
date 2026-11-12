@@ -1,13 +1,11 @@
 ---
-title: Od lo ahavti dai "
+title: Od lo ahavti dai
 titre_francais: oh, je n'ai pas assez aimé"
 choregraphe: Naomi Shemer
 annee: 1977
 musique: ''
 pas_choregraphie: ''
 sens_choregraphie: ''
-lien_video: https://www.youtube.com/watch?v=WhOxXeigboc
-lien_musique: https://www.youtube.com/watch?v=V4QSoLFj-NM
 paroles_hebreu: |2-
    כפר
   עוד לא מצאתי מים באמצע המדבר
@@ -91,4 +89,17 @@ paroles_francais: |-
   Il y a encore beaucoup de choses que je souhaiterais faire
   Bien sûr, tu me pardonneras aussi cette année.
 fiche_odt: ''
+videos:
+  - titre: Lo Ahavti Dai - Israeli dance
+    lien: https://www.youtube.com/watch?v=K45EDq9OvEI&t=3s
+    image: ''
+  - titre: Od lo ahavti dai
+    lien: https://www.youtube.com/watch?v=WhOxXeigboc
+    image: ''
+musiques:
+  - titre: Od lo ahavti dai
+    lien: https://www.youtube.com/watch?v=V4QSoLFj-NM
+    image: ''
+lien_musique: https://www.youtube.com/watch?v=V4QSoLFj-NM
+lien_video: https://www.youtube.com/watch?v=WhOxXeigboc
 ---
