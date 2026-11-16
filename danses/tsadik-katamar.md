@@ -13,7 +13,7 @@ sens_choregraphie: |-
 paroles_hebreu: ''
 paroles_translitteration: ''
 paroles_francais: ''
-fiche_odt: ''
+fiche_odt: /danses/fichiers/tsadik katamar.odt
 videos:
   - titre: Tsadik Katamar 1
     lien: www.youtube.com/watch?v=PrE3c2rgQsY
