@@ -19,10 +19,15 @@ pas_choregraphie: |-
   4 pas Marche arrière tape des mains hauteur visage D G D G
   R
 sens_choregraphie: "La chanson folklorique israélienne Agala im Susa (en hébreu : עגלה עם סוסה, « Une charrette avec une jument ») est très populaire dans les répertoires de danses en cercle. Écrite par Avshalom Cohen et rendue célèbre par Yaffa Yarkoni, elle dépeint la joie d'un paysan menant sa jument à travers les champs"
-lien_video: https://youtu.be/r9h4IOoD03I?list=RDr9h4IOoD03I
-lien_musique: https://www.youtube.com/watch?v=s3W5de-BwFU
 paroles_hebreu: ''
 paroles_translitteration: ''
 paroles_francais: ''
 fiche_odt: /danses/fichiers/Agala Im Susa, Danza Circular25 26 .odt
+videos:
+  - titre: Agala Im Susa, Danza Circular
+    lien: https://youtu.be/r9h4IOoD03I?list=RDr9h4IOoD03I
+    image: ''
+musiques: []
+lien_musique: https://www.youtube.com/watch?v=s3W5de-BwFU
+lien_video: https://youtu.be/r9h4IOoD03I?list=RDr9h4IOoD03I
 ---
