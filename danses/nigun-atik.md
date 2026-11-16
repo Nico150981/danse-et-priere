@@ -49,7 +49,7 @@ paroles_francais: |-
   Car la danse jaillit,
   Bonnes, bonnes sont nos tentes
   Nous reviendrons encore vers une ancienne mélodie.
-fiche_odt: ''
+fiche_odt: /danses/fichiers/5 Nigun Atik
 videos:
   - titre: Nigun Atik - IFD Israeli folk dancing for beginners
     lien: https://www.youtube.com/watch?v=pct_yxXwHfY
