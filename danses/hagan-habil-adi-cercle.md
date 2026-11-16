@@ -22,10 +22,24 @@ sens_choregraphie: |-
   Des bêtes sauvages, déprimées, mangeront dans ma main
   Et dans ta main, tu dissimuleras la clé de mon cœur
   Et aucun autre être aimé n’habitera dans le jardin particulier.
-lien_video: https://dansesdisrael.fr/danses/hagan-habiladi-cercle/
-lien_musique: https://www.youtube.com/watch?v=9NwY2cfsabE, https://www.youtube.com/watch?v=W8mCX2cYWp4
 paroles_hebreu: ''
 paroles_translitteration: ''
 paroles_francais: ''
 fiche_odt: ''
+videos:
+  - titre: Hagan Habil'adi (Secret Garden) 1
+    lien: https://www.youtube.com/watch?v=ukseFqEmrBY
+    image: ''
+  - titre: Hagan Habil'adi (Israel) FDCSCOV
+    lien: https://www.youtube.com/watch?v=KKV-yqES_68
+    image: ''
+  - titre: Hagan Habil adi (Jardin Secreto) - Danza Circular
+    lien: https://www.youtube.com/watch?v=FFBb6cQAUzI
+    image: ''
+  - titre: '"Hagan Habil''adi" Danse d''Israël par Nicole Coppey, Céline, Jessie et Laura'
+    lien: https://www.youtube.com/watch?v=vDtylSJZN9A
+    image: ''
+musiques: []
+lien_musique: https://www.youtube.com/watch?v=9NwY2cfsabE, https://www.youtube.com/watch?v=W8mCX2cYWp4
+lien_video: https://dansesdisrael.fr/danses/hagan-habiladi-cercle/
 ---
