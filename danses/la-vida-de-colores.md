@@ -13,8 +13,6 @@ sens_choregraphie: |-
   Les « couleurs » symbolisent la diversité des expériences humaines : la tristesse, la renaissance, la joie et la résilience. Le refrain affirme que la vie ne peut être enfermée dans une opposition binaire entre le blanc et le noir.
 
   La phrase « Yo muero aquí, renazco así » peut aussi se traduire plus naturellement par : « Ici, je meurs ; ainsi, je renais. » Elle évoque une transformation intérieure après l’épreuve.
-lien_video: www.youtube.com/watch?v=UYjbZqGyeF4
-lien_musique: https://www.youtube.com/watch?v=jDpVQzTFh8A
 paroles_hebreu: ''
 paroles_translitteration: |-
   No es blanca ni negra, es de colores
@@ -86,4 +84,11 @@ paroles_francais: |-
 
   Weh, eh !
 fiche_odt: /danses/fichiers/La vida de colores.odt
+videos:
+  - titre: LA VIDA DE COLORES
+    lien: www.youtube.com/watch?v=UYjbZqGyeF4
+    image: ''
+musiques: []
+lien_musique: https://www.youtube.com/watch?v=jDpVQzTFh8A
+lien_video: www.youtube.com/watch?v=UYjbZqGyeF4
 ---
