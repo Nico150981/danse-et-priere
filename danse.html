@@ -11,7 +11,13 @@
         .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h1 { color: var(--orange); text-align: center; margin-bottom: 5px; }
         .meta { text-align: center; color: var(--doux); margin-bottom: 30px; font-size: 1.1rem; }
-        
+
+        /* En-tête : image à côté du titre et des infos */
+        .entete { display: flex; align-items: center; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 30px; }
+        .entete img { display: none; width: 170px; height: 170px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .entete-texte { flex: 1 1 300px; min-width: 0; }
+        .entete-texte .meta { margin-bottom: 0; }
+
         /* Onglets */
         .tabs { display: flex; border-bottom: 2px solid #eee; margin-bottom: 20px; flex-wrap: wrap; }
         .tab-btn { background: none; border: none; padding: 10px 20px; font-size: 1.1rem; font-weight: bold; color: var(--doux); cursor: pointer; border-bottom: 3px solid transparent; transition: 0.3s; }
@@ -24,7 +30,7 @@
         .lyrics-box { background: #fdf6ec; padding: 20px; border-radius: 10px; margin-bottom: 20px; white-space: pre-wrap; font-family: monospace; font-size: 1rem; }
         .chore-box { background: #eef2f5; padding: 20px; border-radius: 10px; margin-bottom: 20px; white-space: pre-wrap; font-family: inherit; font-size: 1.05rem; }
         h3 { color: var(--texte); border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 25px; }
-        
+
         /* Style pour les vidéos et musiques */
         .grille-medias { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 15px; }
         .carte-media { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-decoration: none; color: inherit; transition: transform 0.2s; display: flex; flex-direction: column; }
@@ -45,22 +51,27 @@
 <body>
 
     <div class="container">
-        <a href="danses.html" class="btn-back">← Retour au listing</a>
-        
-        <div id="loader" class="loader">Chargement des détails de la danse...</div>
-        
-        <div id="contenu-danse" style="display: none;">
-            <h1 id="titre-danse">Titre</h1>
-            <div class="meta" id="meta-infos"></div>
+        <a href="danses.html" class="btn-back" id="lien-retour">← Retour au listing</a>
 
-                       <div class="tabs">
+        <div id="loader" class="loader">Chargement des détails de la danse...</div>
+
+        <div id="contenu-danse" style="display: none;">
+            <div class="entete">
+                <img id="image-danse" src="" alt="">
+                <div class="entete-texte">
+                    <h1 id="titre-danse">Titre</h1>
+                    <div class="meta" id="meta-infos"></div>
+                </div>
+            </div>
+
+            <div class="tabs">
                 <button class="tab-btn active" onclick="ouvrirOnglet('chore', this)">💃 Chorégraphie</button>
                 <button class="tab-btn" onclick="ouvrirOnglet('medias', this)">🎬 Vidéos & Musiques</button>
                 <button class="tab-btn" onclick="ouvrirOnglet('paroles', this)">📜 Paroles</button>
                 <button class="tab-btn" onclick="ouvrirOnglet('fichiers', this)">📁 Fichier ODT</button>
             </div>
 
-                                    <!-- Onglet Chorégraphie -->
+            <!-- Onglet Chorégraphie -->
             <div id="tab-chore" class="tab-content active">
                 <h3>Le sens de la danse</h3>
                 <div id="sens-choregraphie" class="chore-box">Non renseigné</div>
@@ -72,7 +83,7 @@
             <div id="tab-medias" class="tab-content">
                 <h3>🎬 Vidéos de la danse</h3>
                 <div id="zone-videos" class="grille-medias"></div>
-                
+
                 <h3 style="margin-top:40px;">🎵 Musiques</h3>
                 <div id="zone-musiques" class="grille-medias"></div>
             </div>
@@ -105,12 +116,17 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const fileName = urlParams.get('fichier');
+        // Dossier d'origine : "danses" (par défaut) ou "louanges"
+        const dossier = urlParams.get('dossier') === 'louanges' ? 'louanges' : 'danses';
+
+        // Le lien de retour pointe vers le bon listing
+        document.getElementById('lien-retour').href = dossier + '.html';
 
         if (!fileName) {
             document.getElementById('loader').innerText = "Erreur : Aucune danse spécifiée.";
         } else {
             // On ajoute un paramètre de temps pour forcer le rechargement (éviter le cache GitHub)
-            const rawUrl = `https://raw.githubusercontent.com/Nico150981/danse-et-priere/main/danses/${fileName}?t=${new Date().getTime()}`;
+            const rawUrl = `https://raw.githubusercontent.com/Nico150981/danse-et-priere/main/${dossier}/${fileName}?t=${new Date().getTime()}`;
 
             fetch(rawUrl)
                 .then(response => {
@@ -130,6 +146,16 @@
                     if (data.musique) metaStr.push(`Compositeur : ${data.musique}`);
                     document.getElementById('meta-infos').innerText = metaStr.join(" | ") || "";
 
+                    // Image à côté du titre
+                    if (data.image) {
+                        let imgPath = data.image;
+                        if (!/^https?:\/\//.test(imgPath)) imgPath = imgPath.replace(/^\//, '');
+                        const imgEl = document.getElementById('image-danse');
+                        imgEl.src = imgPath;
+                        imgEl.alt = data.title || "";
+                        imgEl.style.display = 'block';
+                    }
+
                     // Paroles & Chorégraphie
                     if (data.paroles_hebreu) document.getElementById('paroles-hebreu').innerText = data.paroles_hebreu;
                     if (data.paroles_translitteration) document.getElementById('paroles-translitteration').innerText = data.paroles_translitteration;
@@ -143,7 +169,7 @@
                         data.videos.forEach(vid => {
                             let imageSrc = vid.image || getYoutubeThumbnail(vid.lien);
                             let imgHtml = imageSrc ? `<img src="${imageSrc}" alt="${vid.titre}">` : `<div style="background:#ddd; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">Pas d'image</div>`;
-                            
+
                             zoneVideos.innerHTML += `
                                 <a href="${vid.lien}" target="_blank" class="carte-media">
                                     <div class="img-container">
@@ -166,7 +192,7 @@
                         data.musiques.forEach(mus => {
                             let imageSrc = mus.image || getYoutubeThumbnail(mus.lien);
                             let imgHtml = imageSrc ? `<img src="${imageSrc}" alt="${mus.titre}">` : `<div style="background:#ddd; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">🎵</div>`;
-                            
+
                             zoneMusiques.innerHTML += `
                                 <a href="${mus.lien}" target="_blank" class="carte-media">
                                     <div class="img-container">
