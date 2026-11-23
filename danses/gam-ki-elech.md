@@ -53,7 +53,7 @@ sens_choregraphie: |-
 paroles_hebreu: ''
 paroles_translitteration: ''
 paroles_francais: ''
-fiche_odt: /danses/fichiers/gam ki elech.odt
+fiche_odt: /danses/fichiers/gam ki elech-1.odt
 videos:
   - titre: 'Gam Ki Elech: explication'
     lien: https://drive.google.com/file/d/1F3nKbscK6Q6yhV86oRilLOcBHB7syi9w/view?usp=sharing
