@@ -1,4 +1,4 @@
-backend:
+backend: 
   name: github
   repo: Nico150981/danse-et-priere
   branch: main
@@ -9,13 +9,14 @@ public_folder: "/danses/fichiers"
 
 collections:
   - name: "danses"
-    label: "Danses"
+    label: "Danses d'Israël"
     folder: "danses"
     create: true
     slug: "{{slug}}"
     format: "frontmatter"
     fields:
       - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Image (affichée à côté du titre)", name: "image", widget: "image", required: false, hint: "Image carrée ou paysage, légère (moins de 500 Ko si possible)" }
       - { label: "Titre en français", name: "titre_francais", widget: "string", required: false }
       - { label: "Chorégraphe", name: "choregraphe", widget: "string", required: false }
       - { label: "Année", name: "annee", widget: "number", required: false, value_type: "int" }
@@ -38,6 +39,44 @@ collections:
           - { label: "Miniature (Image)", name: "image", widget: "image", required: false, hint: "Si vous laissez vide et que c'est YouTube, l'image sera automatique." }
           
       # NOUVEAU : Liste pour les musiques
+      - label: "Musiques (Liens d'écoute)"
+        name: "musiques"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre de la musique", name: "titre", widget: "string" }
+          - { label: "Lien d'écoute (Spotify, Deezer, YouTube...)", name: "lien", widget: "string" }
+          - { label: "Miniature (Image)", name: "image", widget: "image", required: false }
+
+  - name: "louanges"
+    label: "Danses louange hybride"
+    folder: "louanges"
+    media_folder: "louanges/fichiers"
+    public_folder: "/louanges/fichiers"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Image (affichée à côté du titre)", name: "image", widget: "image", required: false, hint: "Image carrée ou paysage, légère (moins de 500 Ko si possible)" }
+      - { label: "Titre en français", name: "titre_francais", widget: "string", required: false }
+      - { label: "Chorégraphe", name: "choregraphe", widget: "string", required: false }
+      - { label: "Année", name: "annee", widget: "number", required: false, value_type: "int" }
+      - { label: "Musique (compositeur)", name: "musique", widget: "string", required: false }
+      - { label: "Pas et mouvements (Chorégraphie détaillée)", name: "pas_choregraphie", widget: "text", required: false }
+      - { label: "Sens de la chorégraphie", name: "sens_choregraphie", widget: "text", required: false }
+      - { label: "Paroles (Hébreu)", name: "paroles_hebreu", widget: "text", required: false }
+      - { label: "Paroles (Translittération)", name: "paroles_translitteration", widget: "text", required: false }
+      - { label: "Paroles (Français)", name: "paroles_francais", widget: "text", required: false }
+      - { label: "Fiche ODT", name: "fiche_odt", widget: "file", required: false, hint: "Téléversez le document ODT ici" }
+      - label: "Vidéos"
+        name: "videos"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Titre de la vidéo", name: "titre", widget: "string" }
+          - { label: "Lien de la vidéo (YouTube, etc.)", name: "lien", widget: "string" }
+          - { label: "Miniature (Image)", name: "image", widget: "image", required: false, hint: "Si vous laissez vide et que c'est YouTube, l'image sera automatique." }
       - label: "Musiques (Liens d'écoute)"
         name: "musiques"
         widget: "list"
