@@ -31,6 +31,16 @@ pas_choregraphie: |2-
 
   Final , on ralentit la fin de 3 et on avance vers le centre, mains tendues vers le
                       ciel et qui s'agitent comme des papillons .
+
+  DANSE SIMPLIFIER
+  1) Sur LE CERCLE A DROITE : MAYIM en ryhme
+  2) Vers le centre, au centre main sur le coeur, consolation Ballance D G
+   recule retour sur le cercle,SÈME DE L’Amour: Donne ce que l’on a recu D et G 
+
+  3) Sur le cercle face au centre : klezmer 2 pas D talonne G, 2 pas D, talonne D puiser 4 x à la source ciel tour 4 temps
+
+  Final , avance vers le centre, mains tendues vers le
+                      ciel ( papillons qui s’envolent )
 sens_choregraphie: |-
   Inspirée du Psaume 23, sur le chant hébreu « Gam Ki Elech » signifie : « Même si je marche… ». Ce psaume de David nous rappelle que Dieu est notre berger que sa présence est notre appui : Il nous conduit, nous repose, nous console nous ranime et nous accompagne, même au cœur de difficultés.Ensemble marchons vers Lui avec simplicité et fraternité. 
 
