@@ -32,6 +32,8 @@ pas_choregraphie: |2-
   Final , on ralentit la fin de 3 et on avance vers le centre, mains tendues vers le
                       ciel et qui s'agitent comme des papillons .
 sens_choregraphie: |-
+  Inspirée du Psaume 23, sur le chant hébreu « Gam Ki Elech » signifie : « Même si je marche… ». Ce psaume de David nous rappelle que Dieu est notre berger que sa présence est notre appui : Il nous conduit, nous repose, nous console nous ranime et nous accompagne, même au cœur de difficultés.Ensemble marchons vers Lui avec simplicité et fraternité. 
+
   Psaume de David. Le Seigneur est mon berger, je ne manque de rien.
   2 Sur de frais herbages il me fait coucher; près des eaux du repos il me mène,
   3 il me ranime. Il me conduit par les bons sentiers, pour l'honneur de son nom.
