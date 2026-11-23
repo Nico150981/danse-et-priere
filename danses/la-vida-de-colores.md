@@ -1,5 +1,6 @@
 ---
 title: La vida de colores
+image: /danses/fichiers/0 lavida de colores.jpg
 titre_francais: La vie en couleur Aida Bossa
 choregraphe: Danse du monde, danse circulaire
 annee: 2021
