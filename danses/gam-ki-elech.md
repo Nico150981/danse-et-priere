@@ -49,5 +49,8 @@ videos:
   - titre: Gam Ki Elech
     lien: https://drive.google.com/file/d/117cJWlr0mChFHulFQ4q5GJZ_2eUPB7Qr/view?usp=sharing
     image: ''
-musiques: []
+musiques:
+  - titre: Gam Ki Elech
+    lien: https://drive.google.com/file/d/1SjZpGDElx8eb-dg-1qrAxyEuGltcFiEN/view?usp=sharing
+    image: ''
 ---
